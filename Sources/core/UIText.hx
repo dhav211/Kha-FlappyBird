@@ -10,7 +10,7 @@ class UIText extends UIObject {
 	var font:Font;
 
 	public function new(position:Vector2, size:Vector2, rotation:Float, text:String, textSize:Int, font:Font) {
-		super(position, size, rotation);
+		super(position, new Vector2(font.width(textSize, text), font.height(textSize)), rotation);
 
 		this.text = text;
 		this.textSize = textSize;

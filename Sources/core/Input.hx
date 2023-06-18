@@ -1,5 +1,8 @@
 package core;
 
+import kha.math.FastMatrix3;
+import kha.math.FastVector2;
+import kha.math.Vector2;
 import kha.math.Vector2i;
 import kha.input.KeyCode;
 import kha.input.Keyboard;
@@ -75,7 +78,10 @@ class Input {
 	}
 
 	public function getMousePosition():Vector2i {
-		return mouseState.position;
+		var inverseScale:FastMatrix3 = App.gameWindow.scale.inverse();
+		var mousePositionScaled = inverseScale.multvec(new FastVector2(mouseState.position.x, mouseState.position.y));
+
+		return new Vector2i(Std.int(mousePositionScaled.x), Std.int(mousePositionScaled.y));
 	}
 
 	public function isMouseButtonDown(button:Int):Bool {

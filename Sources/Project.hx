@@ -1,5 +1,7 @@
 package;
 
+import kha.graphics2.Graphics;
+import kha.math.FastMatrix3;
 import core.UIText;
 import haxe.Timer;
 import core.App;
@@ -9,6 +11,9 @@ import kha.math.Random;
 import kha.math.Vector2;
 import kha.Assets;
 import kha.Framebuffer;
+import kha.Scaler;
+import kha.System;
+import kha.Image;
 
 enum GameState {
 	Intro;
@@ -70,9 +75,7 @@ class Project {
 		}
 	}
 
-	public function render(framebuffer:Framebuffer) {
-		final graphics = framebuffer.g2;
-		graphics.begin(true, Color.fromBytes(25, 25, 25));
+	public function render(graphics:Graphics) {
 		background.render(graphics);
 
 		for (i in 0...pipes.length) {
@@ -86,7 +89,6 @@ class Project {
 		bird.render(graphics);
 		restartButton.render(graphics);
 		scoreText.render(graphics);
-		graphics.end();
 	}
 
 	function handleGroundPieces(delta:Float) {
