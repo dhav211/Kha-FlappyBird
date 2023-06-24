@@ -1,7 +1,6 @@
 package core;
 
 import kha.math.Vector2i;
-import haxe.Constraints.Function;
 import core.UIObject;
 
 typedef UIObjectEventHandler = {
@@ -20,7 +19,7 @@ class UIManager {
 	}
 
 	public function checkListeners() {
-		var mousePos = App.input.getMousePosition();
+		var mousePos = App.input.getMouseScreenPosition();
 		for (uiObject in uiObjects) {
 			if (mousePos.x >= uiObject.object.position.x
 				&& mousePos.x <= uiObject.object.position.x + uiObject.object.size.x

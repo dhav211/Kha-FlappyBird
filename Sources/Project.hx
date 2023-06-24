@@ -1,19 +1,12 @@
 package;
 
 import kha.graphics2.Graphics;
-import kha.math.FastMatrix3;
 import core.UIText;
-import haxe.Timer;
 import core.App;
-import core.Input;
 import core.Collisions.Collisons;
 import kha.math.Random;
 import kha.math.Vector2;
 import kha.Assets;
-import kha.Framebuffer;
-import kha.Scaler;
-import kha.System;
-import kha.Image;
 
 enum GameState {
 	Intro;
@@ -47,21 +40,22 @@ class Project {
 	}
 
 	public function update(delta:Float) {
-		bird.update(delta);
-
 		switch (currentGameState) {
 			case Intro:
+				bird.update(delta);
 				if (App.input.isMouseButtonJustPressed(0)) {
 					currentGameState = Gameplay;
 					bird.setCurrentGameState(currentGameState);
 				}
 			case Gameplay:
+				bird.update(delta);
 				handleGroundPieces(delta);
 				handlePipes(delta);
 				handleCollisions();
 			case Dead:
-				currentGameState = Dead;
+				bird.update(delta);
 			case GameOver:
+				bird.update(delta);
 				if (isRestarting) {
 					bird = new Bird(new Vector2(100, 256), onGameOver);
 					groundPieces = [new Ground(new Vector2(0, 400))];
