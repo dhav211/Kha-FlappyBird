@@ -1,7 +1,7 @@
 package;
 
 import kha.graphics2.Graphics;
-import core.UIText;
+import core.Text;
 import core.App;
 import core.Collisions.Collisons;
 import kha.math.Random;
@@ -26,7 +26,7 @@ class Project {
 	var pipeSpawnTime:Float = 2;
 	var currentPipeSpawnTime:Float = 0;
 	var score:Int = 0;
-	var scoreText:UIText;
+	var scoreText:Text;
 	var isRestarting:Bool = false;
 
 	public function new() {
@@ -34,7 +34,7 @@ class Project {
 		background = new Background();
 		groundPieces = [new Ground(new Vector2(0, 400))];
 		pipes = new Array<Pipe>();
-		scoreText = new UIText(new Vector2(130, 20), new Vector2(0, 0), 0, "0", 48, Assets.fonts.flappy_font);
+		scoreText = new Text(new Vector2(130, 20), new Vector2(0, 0), 0, "0", 48, Assets.fonts.flappy_font);
 		restartButton = new RestartButton(onRestartButtonClicked);
 		restartButton.isVisible = false;
 	}

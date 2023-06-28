@@ -1,10 +1,9 @@
-import core.UIImage;
+import core.SpriteObject;
 import kha.math.Vector2i;
 import kha.Assets;
 import kha.math.Vector2;
-import core.UIObject;
 
-class RestartButton extends UIImage {
+class RestartButton extends SpriteObject {
 	var clickHandler:() -> Void;
 
 	public function new(clickHandler:() -> Void) {

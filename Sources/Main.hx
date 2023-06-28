@@ -1,12 +1,12 @@
 package;
 
+import core.GameObjectManager;
 import kha.Framebuffer;
 import kha.Image;
 import kha.Scaler;
 import kha.Scaler.TargetRectangle;
 import core.GameWindow;
 import kha.Window;
-import core.UIManager;
 import kha.math.Random;
 import kha.Assets;
 import kha.Scheduler;
@@ -24,7 +24,7 @@ class Main {
 				// Set the seed for random so it can be called from anywhere
 				Random.init(cast(Date.now().getTime()));
 				App.input = new Input();
-				App.uiManager = new UIManager();
+				App.gameObjectManager = new GameObjectManager();
 				App.gameWindow = new GameWindow(0, 0, 576, 1024, 288, 512, 2, 0);
 
 				var window:Window = Window.get(0);
@@ -38,7 +38,7 @@ class Main {
 				Scheduler.addTimeTask(function() {
 					delta = Scheduler.time() - currentTime;
 					project.update(delta);
-					App.uiManager.checkListeners();
+					App.gameObjectManager.checkListeners();
 					App.input.endFrame();
 					currentTime = Scheduler.time();
 				}, 0, 1 / 60);
