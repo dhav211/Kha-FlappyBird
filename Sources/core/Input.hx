@@ -2,7 +2,6 @@ package core;
 
 import kha.math.FastMatrix3;
 import kha.math.FastVector2;
-import kha.math.Vector2;
 import kha.math.Vector2i;
 import kha.input.KeyCode;
 import kha.input.Keyboard;

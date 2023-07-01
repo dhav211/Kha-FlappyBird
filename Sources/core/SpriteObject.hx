@@ -10,7 +10,13 @@ class SpriteObject extends GameObject {
 	var sprite:Image;
 	var animationPlayer:AnimationPlayer;
 
-	public function new(position:Vector2, size:Vector2, rotation:Float, sprite:Image) {
+	/**
+		@param sprite The image file from kha assets
+		@param position Position to instantiate sprite.
+		@param size Size of sprite in sheet, doesnt work as scaling
+		@param rotation Rotation of sprite in degrees
+	**/
+	public function new(sprite:Image, position:Vector2, size:Vector2, rotation:Float) {
 		super();
 		this.position = position;
 		this.sprite = sprite;

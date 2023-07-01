@@ -38,7 +38,7 @@ class Main {
 				Scheduler.addTimeTask(function() {
 					delta = Scheduler.time() - currentTime;
 					project.update(delta);
-					App.gameObjectManager.checkListeners();
+					App.gameObjectManager.checkMouseInputListeners();
 					App.input.endFrame();
 					currentTime = Scheduler.time();
 				}, 0, 1 / 60);

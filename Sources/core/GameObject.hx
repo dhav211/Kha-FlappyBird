@@ -22,7 +22,9 @@ class GameObject {
 
 	public function kill() {}
 
-	public function destroy() {}
+	public function destroy() {
+		App.gameObjectManager.removeGameObject(this);
+	}
 
 	function onMouseEnter() {}
 
