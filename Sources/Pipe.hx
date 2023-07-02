@@ -6,7 +6,7 @@ class Pipe extends SpriteObject {
 	public var hasScoreCounted:Bool = false;
 
 	public function new(position:Vector2, rotation:Float) {
-		super(position, new Vector2(52, 320), rotation, Assets.images.pipe_green);
+		super(Assets.images.pipe_green, position, new Vector2(52, 320), rotation);
 	}
 
 	public override function update(delta:Float) {

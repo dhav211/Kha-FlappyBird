@@ -6,7 +6,7 @@ class Ground extends SpriteObject {
 	public var hasSpawnedNext:Bool = false;
 
 	public function new(position:Vector2) {
-		super(position, new Vector2(336, 112), 0, Assets.images.base);
+		super(Assets.images.base, position, new Vector2(336, 112), 0);
 	}
 
 	public override function update(delta:Float) {

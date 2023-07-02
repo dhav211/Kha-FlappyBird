@@ -7,7 +7,7 @@ class RestartButton extends SpriteObject {
 	var clickHandler:() -> Void;
 
 	public function new(clickHandler:() -> Void) {
-		super(new Vector2(100, 250), new Vector2(130, 46), 0, Assets.images.restart);
+		super(Assets.images.restart, new Vector2(100, 250), new Vector2(130, 46), 0);
 
 		this.clickHandler = clickHandler;
 	}

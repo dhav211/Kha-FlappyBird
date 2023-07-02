@@ -15,7 +15,7 @@ class Bird extends SpriteObject {
 	var onGameOverHandler:() -> Void;
 
 	public function new(position:Vector2, onGameOverHandler:() -> Void) {
-		super(position, new Vector2(34, 24), 0, Assets.images.bird);
+		super(Assets.images.bird, position, new Vector2(34, 24), 0);
 		this.onGameOverHandler = onGameOverHandler;
 		animationPlayer.addAnimation("flap", [new Vector2i(0, 0), new Vector2i(34, 0), new Vector2i(68, 0)], 4);
 		animationPlayer.addAnimation("glide", [new Vector2i(34, 0)], 4);
