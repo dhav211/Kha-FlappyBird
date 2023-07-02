@@ -9,6 +9,7 @@ import kha.math.Vector2;
 class SpriteObject extends GameObject {
 	var sprite:Image;
 	var animationPlayer:AnimationPlayer;
+	var isAnimated:Bool;
 
 	/**
 		@param sprite The image file from kha assets
@@ -24,11 +25,12 @@ class SpriteObject extends GameObject {
 		this.rotation = rotation;
 		this.radius = ((size.x + size.y) * 0.5) * 0.5;
 		this.originPoint = new Vector2(size.x * 0.5, size.y * 0.5);
-		animationPlayer = new AnimationPlayer();
+		animationPlayer = new AnimationPlayer(setIsAnimated);
 	}
 
 	public override function update(delta:Float) {
-		animationPlayer.update(delta);
+		if (isAnimated)
+			animationPlayer.update(delta);
 	}
 
 	public override function render(graphics:Graphics) {
@@ -36,5 +38,9 @@ class SpriteObject extends GameObject {
 		if (isVisible)
 			graphics.drawSubImage(sprite, position.x, position.y, animationPlayer.getCurrentFrame().x, animationPlayer.getCurrentFrame().y, size.x, size.y);
 		graphics.popTransformation();
+	}
+
+	private function setIsAnimated() {
+		isAnimated = true;
 	}
 }

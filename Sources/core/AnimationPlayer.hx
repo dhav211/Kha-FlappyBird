@@ -20,7 +20,10 @@ class AnimationPlayer {
 
 	var isAnimationSet:Bool = false;
 
-	public function new() {
+	var isAnimatedHandler:() -> Void;
+
+	public function new(isAnimatedHandler:() -> Void) {
+		this.isAnimatedHandler = isAnimatedHandler;
 		animations = new Map<String, Animation>();
 		isAnimationSet = false;
 	}
@@ -34,6 +37,7 @@ class AnimationPlayer {
 	public function addAnimation(name:String, frames:Array<Vector2i>, fps:Int) {
 		var animation:Animation = new Animation(name, frames, fps);
 		animations.set(name, animation);
+		isAnimatedHandler();
 	}
 
 	/**
@@ -53,7 +57,7 @@ class AnimationPlayer {
 	public function update(delta:Float) {
 		// increase the animation frame time by delta if it isn't paused or not set.
 		// once the frame time has reached frame length, then move to next frame or the first frame if it is the last
-		if (!isPaused && !isAnimationSet) {
+		if (!isPaused || !isAnimationSet) {
 			animations[currentAnimation].currentFrameLength += delta;
 
 			if (animations[currentAnimation].currentFrameLength >= animations[currentAnimation].frameLength) {
@@ -99,7 +103,6 @@ class AnimationPlayer {
 			return animations[currentAnimation].frames[animations[currentAnimation].currentFrame];
 		}
 
-		trace("Error:  No animation set to recieve current frame from");
 		return new Vector2i(0, 0);
 	}
 }
